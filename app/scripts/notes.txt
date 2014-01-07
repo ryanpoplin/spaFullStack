@@ -1,0 +1,16 @@
+SPA Diagram:
+
+MongoDB:
+- Data Storage
+- Data Retrieval
+
+Node.js/Express.js/Connect.js/Socket.IO
+- Authentication
+- Authorization
+- Validation
+
+Client-Side MVC/Etc...:
+- HTML Rendering
+- HTML Generation
+- JS Behavior
+- Business Logic
