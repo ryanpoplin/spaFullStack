@@ -13,10 +13,15 @@
 	vars: true,
 	white: true
 */
-// jQuery
+/**
+* declare, initialize, execute...
+*/
+// jquery
+// 1st
 (function ($) {
 // Module /spa/
 // chat slider functionality
+	// 2nd
 	var 
 		spa
 	;
@@ -30,6 +35,7 @@
 			initModule
 		;
 		// constants
+		// 3rd
 		configMap = { 
 			extendedHeight: 500,
 			extendedTitle: 'Click to retract...',
