@@ -14,3 +14,6 @@ Client-Side MVC/Etc...:
 - HTML Generation
 - JS Behavior
 - Business Logic
+
+iOS/Android Integration:
+- Abstraction Layer i.e. JS to Objective-C Environment
