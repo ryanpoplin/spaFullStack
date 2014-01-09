@@ -18,14 +18,14 @@
 */
 // jquery
 // 1st
-(function ($) {
+// (function ($) {
 // Module /spa/
 // chat slider functionality
 	// 2nd
 	var 
 		spa
 	;
-	spa = (function () {
+	spa = (function ($) {
 		// module scope vars
 		var
 			configMap,
@@ -41,8 +41,9 @@
 			extendedTitle: 'Click to retract...',
 			retractedHeight: 20,
 			retractedTitle: 'Click to extend...',
+			// temp underscore template...
 			templateHtml: _.template($('#spa-slider-template').html())
-		};
+		};	
 		// dom /toggleSlider/
 		// alternates slider height
 		toggleSlider = function () {
@@ -85,9 +86,5 @@
 			return true;
 		}; 
 		return { initModule: initModule };
-	}());
-	// start spa when the dom is ready...
-	$(function () {
-		spa.initModule($('#spa'));
-	});
-}(jQuery));
+	}(jQuery));
+// }(jQuery));
