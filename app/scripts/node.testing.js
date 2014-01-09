@@ -33,7 +33,7 @@
 	function testFuncOne (testOne) {
 		// var hoisting occured, but was not init over first pass init
 		console.log(testOne);
-		var testOne;
+		var testOne = 'Now it\'s locally init';
 		console.log(testOne);
 	}
 	testFuncOne(testOne);
@@ -57,7 +57,7 @@
 		// a new context object 
 		innerCon();
 	}
-	// prototype-based testing === sexy
+	// prototype-based testing
 	// 1st
 	var
 		objectCreate,
@@ -66,8 +66,9 @@
 		firstProgrammer,
 		secondProgrammer
 	;
+	// cross-browser Object.create && what it is doing
 	objectCreate = function (arg) {
-		if (!arg) { return  {}; }
+		if (!arg) { return {}; }
 		function obj () {};
 		obj.prototype = arg;
 		return new obj;
@@ -95,6 +96,8 @@
 	secondProgrammer = MakeProgrammer('Electric Dodds', 27);
 	// object instances
 	console.log(firstProgrammer);
+	console.log(firstProgrammer.__proto__);
 	console.log(secondProgrammer);
+	console.log(secondProgrammer.__proto__.__proto__);
 	
 }());
