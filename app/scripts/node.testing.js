@@ -99,5 +99,76 @@
 	console.log(firstProgrammer.__proto__);
 	console.log(secondProgrammer);
 	console.log(secondProgrammer.__proto__.__proto__);
-	
 }());
+// a module pattern
+var 
+	// tis global
+	poplinr
+;
+poplinr = (function () {
+	var
+		localProgrammer
+	;
+	localProgrammer = 'Ryan Poplin is a JavaScript programmer';
+	return { localProgrammer: localProgrammer };
+}());
+console.log(poplinr.localProgrammer);
+// a basic closure
+var
+	// tis global
+	makeClosure
+
+;
+makeClosure = function (closure) {
+	return function () {
+		return closure;
+	}
+};
+var
+	poplinClosure
+;
+poplinClosure = makeClosure('Ryan Poplin');
+console.log(poplinClosure());
+// closure country
+var 
+	curryLog,
+	logHello,
+	logStayAliveBabe,
+	logTimeToSayGoodbyeHun
+;
+curryLog = function (arg) {
+	var
+		log
+	;
+	log = function () {
+		console.log(arg);
+	};
+	return log;
+};
+logHello = curryLog('Hey, I\'m only human');
+logStayAliveBabe = curryLog('I\'d give you the world if you\'d love me');
+logTimeToSayGoodbyeHun = curryLog('It\'s time for me to go now, goodbye');
+logHello();
+logStayAliveBabe();
+logTimeToSayGoodbyeHun();
+// won't work
+curryLog('Ryan was here...');
+// ...
+var 
+	outerFunc,
+	beer
+;
+beer = 'Heineken';
+outerFunc = function () {
+	var 
+  		wine, 
+  		innerFunc
+	;
+	wine = 'Merlot';
+	innerFunc = function () {
+		// console.log(beer, wine);
+    	console.log({ beer: beer, wine: wine });
+	};
+	return innerFunc();
+};
+outerFunc();
