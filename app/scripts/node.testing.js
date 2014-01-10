@@ -172,3 +172,10 @@ outerFunc = function () {
 	return innerFunc();
 };
 outerFunc();
+(function (x) {
+	return function (y) {
+		return function (z) {
+			console.log(x*y*z);
+		}
+	}
+})(1)(2)(3);
