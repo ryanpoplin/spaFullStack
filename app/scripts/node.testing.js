@@ -1,5 +1,6 @@
 // it's the bigger picture dude/ette
 'use strict';
+// Still a little over my head...
 (function () {
 	var 
 		EventEmitter, 
@@ -63,8 +64,7 @@
 		objectCreate,
 		proto,
 		MakeProgrammer,
-		firstProgrammer,
-		secondProgrammer
+		firstProgrammer
 	;
 	// cross-browser Object.create && what it is doing
 	objectCreate = function (arg) {
@@ -93,12 +93,9 @@
 	};
 	// instantiate
 	firstProgrammer = MakeProgrammer('Ryan Poplin', 23);
-	secondProgrammer = MakeProgrammer('Electric Dodds', 27);
 	// object instances
 	console.log(firstProgrammer);
 	console.log(firstProgrammer.__proto__);
-	console.log(secondProgrammer);
-	console.log(secondProgrammer.__proto__.__proto__);
 }());
 // a module pattern
 var 
@@ -179,3 +176,61 @@ outerFunc();
 		}
 	}
 })(1)(2)(3);
+var poplin = (function () {
+	var 
+		methodOne
+	;
+	methodOne = function (arg) {
+		return 'Module Testing...' + arg;
+	}
+	return { methodOne: methodOne };
+}());
+console.log(poplin.methodOne('JavaScript && C/C++/Objective-C/Java are the only languages worth knowing at this point...'));
+(function () {
+	// return from this scope context...
+	var moduleTesting = (function () {
+		var module, module2;
+		module = function (a,b,c) {
+			return a*b+c;
+		}
+		module2 = function (arg) {	
+			return arg;
+		}
+		return { module:module,
+				 module2:module2 };
+	}());
+	console.log(moduleTesting.module(10,2,3));
+	console.log(moduleTesting.module2('I\'m getting old...'));
+}());
+// global...
+var core = (function () {
+	var core1;
+	core1 = function (stringOfText) {
+		return 'It\'s ' + stringOfText;
+	}
+	return {core1:core1};
+}());
+core.second = (function () {
+	var core2;
+	core2 = function (arg1) {
+		return arg1;
+	}
+	return {core2:core2};
+}());
+console.log(core.core1('Ryan...'));
+console.log(core.second.core2('What are you good for?'));
+console.log(core);
+(function () {
+	var roominate = (function () {
+		var smallRoom, ouyaSpace;
+		smallRoom = function () {
+			return 'Just messing around in here...';
+		}
+		ouyaSpace = function () {
+			return 'Just messing around here...';
+		}
+		return {smallRoom:smallRoom,ouyaSpace:ouyaSpace};
+	}());
+	console.log(roominate.smallRoom());
+	console.log(roominate.ouyaSpace());
+}());

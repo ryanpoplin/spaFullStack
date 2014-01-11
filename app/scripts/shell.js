@@ -9,7 +9,7 @@
 spa.shell = (function () {
   var
     configMap = {
-      main_html : String()
+      mainTemplate : String()
         + '<div class="spa-shell-head">'
           + '<div class="spa-shell-head-logo"></div>'
           + '<div class="spa-shell-head-acct"></div>'
@@ -25,20 +25,18 @@ spa.shell = (function () {
     },
     stateMap  = { $container : null },
     jqueryMap = {},
-
-    setJqueryMap, initModule;
-
+    setJqueryMap, 
+    initModule;
   setJqueryMap = function () {
     var $container = stateMap.$container;
     jqueryMap = { $container : $container };
   };
-
-
+  // Pass in element...
   initModule = function ( $container ) {
+    // Access to the '#spa' element...
     stateMap.$container = $container;
-    $container.html( configMap.main_html );
+    $container.html( configMap.mainTemplate );
     setJqueryMap();
   };
-
   return { initModule : initModule };
 }());

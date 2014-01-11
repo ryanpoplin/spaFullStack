@@ -1,23 +1,13 @@
 'use strict';
-/* jslint settings
-	browser: true,
-	continue: true,
-	devel: true,
-	indent: 2,
-	maxerr: 50,
-	newcap: true,
-	nomen: true,
-	plusplus: true,
-	regexp: true,
-	sloppy: true,
-	vars: true,
-	white: true
+/*jslint         browser : true, continue : true,
+  devel  : true, indent  : 2,    maxerr   : 50,
+  newcap : true, nomen   : true, plusplus : true,
+  regexp : true, sloppy  : true, vars     : false,
+  white  : true
 */
-/* global $, spa */
-var 
-	spa
-;
-spa = (function ($) {
+/*global $, spa */
+// 'spa' is the global module, yo...
+var spa = (function ($) {
 	var
 		configMap,
 		$chatSlider,
@@ -28,10 +18,8 @@ spa = (function ($) {
 	configMap = { 
 		extendedHeight: 500,
 		extendedTitle: 'Click to retract...',
-		retractedHeight: 15,
+		retractedHeight: 25,
 		retractedTitle: 'Click to extend...',
-		// underscore.js template option...
-		// templateHtml: _.template($('#spa-template').html())
 	};	
 	toggleSlider = function () {
 		var 
@@ -56,12 +44,15 @@ spa = (function ($) {
 		toggleSlider();
 		return false;
 	};
+	// Pass in the SPA element...
 	initModule = function ($container) { 
+		// Now we have access to the '#spa' element...
+		// A 'bottom up' execution...
 		spa.shell.initModule($container);
-		$container.html(configMap.templateHtml);
 		$chatSlider = $container.find('.spa-shell-chat');
 		$chatSlider.attr('title', configMap.retractedTitle).click(onClickSlider);
 		return true;
-	}; 
+	};
+	// It's the return value for 'spa'...
 	return { initModule: initModule };
 }(jQuery));
