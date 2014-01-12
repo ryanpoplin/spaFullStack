@@ -7,7 +7,8 @@
 */
 /*global $, spa */
 // 'spa' is the global module, yo...
-var spa = (function ($) {
+var spa;
+spa = (function ($) {
 	var
 		configMap,
 		$chatSlider,

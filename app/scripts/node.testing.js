@@ -234,3 +234,110 @@ console.log(core);
 	console.log(roominate.smallRoom());
 	console.log(roominate.ouyaSpace());
 }());
+// global context...
+// JS Engine...
+// Declare && Init function arguments...
+(function (a) {
+	// 1st local context...
+	// Declare local function vars...
+	// No init taking place, yet...	
+	// Declare and Init the functions and vars...
+	var test1 = a;
+	console.log(a);
+	return function (b) {
+		// 2nd local context...
+		var test2 = b;
+		console.log(b);
+		return function (c) {
+			// 3rd local context...
+			var test3 = c;
+			console.log(c);
+			return function (d) {
+				// 4th local context...
+				var test4 = d;
+				console.log(d);
+				return function (e) {
+					// 5th local context...
+					var test5 = e;
+					console.log(e);
+					console.log(a,b,c,d,e);
+				}
+			}
+		}
+	}
+}(1)(2)(3)(4)(5));
+// A common tricky part...
+var globalMess = 'A noob trip up...';
+function messedUp (arg) {
+	var globalMess;
+	globalMess = 'Another noob trip up...';
+	console.log(arg);
+	console.log(globalMess);
+}
+messedUp(globalMess);
+// If other languages have to be learned such as Objective-C, Java, Ruby, Python, C/C++, etc... Understand the inner workings of the interpreters and compilers...b/c outside of logic, and math there's no much more to it than that besides the execution and options within the programming/design environment...
+// executionContextObject function is hoisted to the top of the file among other hoisted functions...
+// Here's an execution context object...
+executionContextObject('Understand that execution context object...');
+// Understand the execution context object and you'll be a JS King...
+function executionContextObject (arg) {
+	console.log(arg);
+	// return arg;
+}
+console.log('Nodemon Test Run...');
+var tester;
+tester = 'I\'m global scoped...';
+console.log(tester);
+function outer () {
+	var tester;
+	tester = 'I\'m outer scoped...';
+	console.log(tester);
+	function inner () {
+		var tester;
+		tester = 'I\'m inner scoped...';
+		console.log(tester);
+	}
+	inner();
+}
+outer();
+console.log('asdfjkl;');
+// this is prototyping in a nutshell?..
+var programmer;
+console.log(programmer);
+programmer = {
+	name: 'Ryan Poplin',
+	age: 23,
+	languages: ['HTML5', 'CSS3', 'JavaScript']
+};
+console.log(programmer);
+// Prototyping for Roominate...
+/*var roominate;		
+roominate = (function () {
+
+}());*/
+// A prototype...
+(function () {
+	var coreModule;
+	coreModule = (function () {
+		var protoProgrammer, makaProgrammer, poplinProgrammer;
+		protoProgrammer = {
+			name: 'John Doe',
+			age: 23,
+			languages: ['HTML5', 'CSS3', 'JavaScript']
+		};
+		makaProgrammer = function (name, age, langs) {
+			var programmer;
+			// Prototype Linkage...
+			programmer = Object.create(protoProgrammer);
+			// Constructor with a prototypal mind set...
+			programmer.name = name;
+			programmer.age = age;
+			programmer.langs = langs;
+			return programmer;
+		};
+		// The instance of makaProgrammer...
+		poplinProgrammer = makaProgrammer('Ryan Poplin', 23, ['JavaScript']);
+		console.log(poplinProgrammer);
+		console.log(poplinProgrammer.__proto__);
+	}());
+}());
