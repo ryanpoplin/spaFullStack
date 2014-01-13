@@ -310,13 +310,8 @@ programmer = {
 	languages: ['HTML5', 'CSS3', 'JavaScript']
 };
 console.log(programmer);
-// Prototyping for Roominate...
-/*var roominate;		
-roominate = (function () {
-
-}());*/
-// A prototype...
 (function () {
+	// It's self invoking and thus is a context...
 	var coreModule;
 	coreModule = (function () {
 		var protoProgrammer, makaProgrammer, poplinProgrammer;
@@ -328,6 +323,13 @@ roominate = (function () {
 		makaProgrammer = function (name, age, langs) {
 			var programmer;
 			// Prototype Linkage...
+			/*var objectCreate = function ( arg ) {
+  				if ( ! arg ) { return {}; }
+  				function obj() {};
+  				obj.prototype = arg;
+  				return new obj;
+			};
+			Object.create = Object.create || objectCreate;*/
 			programmer = Object.create(protoProgrammer);
 			// Constructor with a prototypal mind set...
 			programmer.name = name;
@@ -340,4 +342,54 @@ roominate = (function () {
 		console.log(poplinProgrammer);
 		console.log(poplinProgrammer.__proto__);
 	}());
+}());
+// Ω “If you want to find the secrets of the universe, think in terms of energy, frequency and vibration.
+var prototypeHype = {
+	tester: 'Just testing yo yo...'
+};
+var objA;
+objA = {};
+objA.__proto__ = prototypeHype;
+console.log(objA);
+console.log(objA.__proto__);
+var protoHypeA = {
+	prototypeHype: 'ASM.JS'
+}
+var anotherProgrammer;
+anotherProgrammer = Object.create(protoHypeA);
+console.log(typeof anotherProgrammer);
+console.log(anotherProgrammer.__proto__);
+(function () {
+	var 
+		prototypeHype, 
+		constructorHype,
+		jsHackerMain,
+		jsHackerSub
+	;
+	prototypeHype = {
+		name: 'JS Hacker'
+	};
+	constructorHype = function (arg) {
+		var jsHacker;
+		jsHacker = Object.create(prototypeHype);
+		jsHacker.arg = arg;
+		return jsHacker;
+	};
+	// Sexy as hell...
+	jsHackerMain = constructorHype('A damn good hacker...');
+	jsHackerSub = constructorHype('A shit hacker...');
+	console.log(jsHackerMain, jsHackerSub);
+	console.log(jsHackerMain.__proto__);
+	console.log(jsHackerSub.__proto__);
+}());
+(function () {	
+	var globalJunk;
+	globalJunk = (function () {
+		var testingLocal;
+		testingLocal = function (arg) {
+			console.log(20+arg);
+		};
+		return {testingLocal:testingLocal};
+	}());
+	globalJunk.testingLocal(234234234234234234);
 }());
