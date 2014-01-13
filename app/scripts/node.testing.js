@@ -382,7 +382,7 @@ console.log(anotherProgrammer.__proto__);
 	console.log(jsHackerMain.__proto__);
 	console.log(jsHackerSub.__proto__);
 }());
-(function () {	
+(function () {
 	var globalJunk;
 	globalJunk = (function () {
 		var testingLocal;
@@ -393,3 +393,48 @@ console.log(anotherProgrammer.__proto__);
 	}());
 	globalJunk.testingLocal(234234234234234234);
 }());
+var protoLike = {
+	proto: 'Just going...'
+}
+function maka (protoLike) {	
+function poplin () {};
+poplin.prototype = protoLike;
+return new poplin;
+}
+var testingYo = maka(protoLike);
+console.log(testingYo);
+console.log(testingYo.__proto__);
+(function () {
+	var realHackersProto, poplinRealHacker;
+	realHackersProto = {
+		vendetta2: 'To prove something...'
+	};
+	function RealHackers (name, age, vendetta) {
+		var realHackers;
+		realHackers = Object.create(realHackersProto);
+		realHackers.name = name;
+		realHackers.age = age;
+		realHackers.vendetta = vendetta;
+		return realHackers;
+	}
+	poplinRealHacker = RealHackers('Ryan Poplin', 23, 'To show people you are a baller! =0');
+	console.log(poplinRealHacker);
+	console.log(poplinRealHacker.__proto__);
+	console.log(poplinRealHacker.vendetta2);
+}());
+// Interesting...
+(function (a) {
+	return function (b) {
+		return function (c) {
+			console.log(a + b + c);
+		}
+	}
+}('I\'m')(' a ')('real hacker...'));
+// It's a basic 'closure'...
+var testClosure = function (arg) {
+	return function () {
+		return arg;
+	}	
+}
+var firstClosure = testClosure('jsHacker');
+console.log(firstClosure());
