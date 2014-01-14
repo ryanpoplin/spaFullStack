@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 /*jslint         browser : true, continue : true,
   devel  : true, indent  : 2,    maxerr   : 50,
   newcap : true, nomen   : true, plusplus : true,
@@ -23,8 +23,9 @@ spa.shell = (function () {
         + '<div class="spa-shell-chat"></div>'
         + '<div class="spa-shell-modal"></div>'
     },
+    // 1. Set from initModule...
     stateMap  = { $container : null },
-    jqueryMap = {},
+    jqueryMap,
     setJqueryMap, 
     initModule;
   setJqueryMap = function () {
@@ -36,7 +37,7 @@ spa.shell = (function () {
     // Access to the '#spa' element...
     stateMap.$container = $container;
     $container.html( configMap.mainTemplate );
-    setJqueryMap();
+    // setJqueryMap();
   };
   return { initModule : initModule };
 }());

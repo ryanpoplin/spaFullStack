@@ -31,18 +31,22 @@ spa = (function ($) {
 			$chatSlider.animate({
 				height: configMap.extendedHeight
 			}).attr('title', configMap.extendedTitle);
+			// ?
 			return true;
 		}
 		else if (sliderHeight === configMap.extendedHeight) {
 			$chatSlider.animate({
 				height: configMap.retractedHeight
 			}).attr('title', configMap.retractedTitle);
+			// ?
 			return true;
 		}
+		// ?
 		return false;
 	};
 	onClickSlider = function (event) {
 		toggleSlider();
+		// ?
 		return false;
 	};
 	// Pass in the SPA element...
@@ -52,8 +56,10 @@ spa = (function ($) {
 		spa.shell.initModule($container);
 		$chatSlider = $container.find('.spa-shell-chat');
 		$chatSlider.attr('title', configMap.retractedTitle).click(onClickSlider);
+		// ?
 		return true;
 	};
 	// It's the return value for 'spa'...
 	return { initModule: initModule };
 }(jQuery));
+// Bottom Up!
